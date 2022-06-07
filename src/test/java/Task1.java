@@ -1,15 +1,17 @@
-import io.github.bonigarcia.wdm.WebDriverManager;
+import base.TestBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Assert;
 import org.testng.annotations.*;
+import pages.AboutPage;
+import pages.HomePage;
+import utils.TextToInteger;
 
 public class Task1  {
-    WebDriver driver;
+    HomePage homePage = new HomePage();
+    AboutPage aboutPage = new AboutPage();
+    TextToInteger textToInteger = new TextToInteger();
 
 
 
@@ -25,43 +27,20 @@ public class Task1  {
     public void mainPageCheckTest(){
 
         //step1
-        WebElement FullscreenBG = TestBase.driver.findElement(By.xpath("//div[@class = 'fullscreen-bg']"));
-        Assert.assertTrue(FullscreenBG.isDisplayed());
+        Assert.assertTrue(homePage.HomePageIsOpen());
 
         //step2
-        WebElement aboutButton = TestBase.driver.findElement(By.xpath("//a[contains(text(),'ABOUT')]"));
-        aboutButton.click();
-        WebElement aboutSteam = TestBase.driver.findElement(By.xpath("//div[contains(@class,\"about_subtitle\")]"));
-
-        Assert.assertTrue(aboutSteam.isDisplayed());
+        homePage.clickOnAbout();
+        Assert.assertTrue(aboutPage.aboutPageIsOpen());
 
         //step3
-        WebElement onlineStatElement = TestBase.driver.findElement(By.xpath("//div[@class='online_stat'][1]"));
-        WebElement inGameStatElement = TestBase.driver.findElement(By.xpath("//div[contains(@class,'gamers_in_game')]//parent::div[@class ='online_stat']"));
-
-        //this converts webelements to string
-        String onlineStatString = onlineStatElement.getText();
-        String inGameStatString= inGameStatElement.getText();
-
-        //this removes text from string and leaves only integers
-        String onlineNumberString = onlineStatString.replaceAll("[^0-9]", "");
-        String inGameNumberString = inGameStatString.replaceAll("[^0-9]", "");
-
-        //this converts filtered Strings to integers
-
-        int onlineInt = Integer.parseInt(onlineNumberString);
-        int inGameInt = Integer.parseInt(inGameNumberString);
-
         //this compares two numbers to each other
-
-        Assert.assertTrue(inGameInt<onlineInt);
+        Assert.assertTrue(textToInteger.filteredToInteger(aboutPage.inGameStatElementText())< textToInteger.filteredToInteger(aboutPage.onlineStatElementText()));
 
         //step4
-        WebElement StoreButtonElement = TestBase.driver.findElement(By.xpath("//a[contains(text(),'STORE')]"));
-        StoreButtonElement.click();
         //this was copy pasted from first test case because basically they both check that unique background poster is displayed :)
-         FullscreenBG = TestBase.driver.findElement(By.xpath("//div[@class = 'fullscreen-bg']"));
-        Assert.assertTrue(FullscreenBG.isDisplayed());
+        homePage.clickOnStore();
+        Assert.assertTrue(homePage.HomePageIsOpen());
 
 
 

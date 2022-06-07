@@ -1,3 +1,5 @@
+package base;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -6,8 +8,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class TestBase {
 
-    protected static WebDriver driver = null;
-    protected static void initialize(){
+    public static WebDriver driver = null;
+    public static void initialize(){
 
         //singleton pattern
 
@@ -32,7 +34,7 @@ public class TestBase {
 
     }
 
-    protected static void quit(){
+    public static void quit(){
         System.out.println("quitting the browser");
         driver.quit();
         driver = null;
