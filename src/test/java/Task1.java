@@ -1,24 +1,24 @@
 import base.TestBase;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import data.JsonReader;
+import org.json.simple.parser.ParseException;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import pages.AboutPage;
 import pages.HomePage;
 import utils.TextToInteger;
 
+import java.io.IOException;
+
 public class Task1  {
     HomePage homePage = new HomePage();
     AboutPage aboutPage = new AboutPage();
     TextToInteger textToInteger = new TextToInteger();
+    JsonReader jsonReader = new JsonReader();
 
 
 
-
-
-    @BeforeTest
-    public void setUp(){
+    @BeforeMethod
+    public void setUp() throws IOException, ParseException {
 
         TestBase.initialize();
 
@@ -41,12 +41,14 @@ public class Task1  {
         //this was copy pasted from first test case because basically they both check that unique background poster is displayed :)
         homePage.clickOnStore();
         Assert.assertTrue(homePage.HomePageIsOpen());
+        System.out.println();
+
 
 
 
     }
 
-    @AfterTest
+    @AfterMethod
     public void tearDown(){
         TestBase.quit();
     }
