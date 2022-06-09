@@ -5,6 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 import pages.AboutPage;
 import pages.HomePage;
+import pages.TopSellers;
 import utils.TextToInteger;
 
 import java.io.IOException;
@@ -12,8 +13,8 @@ import java.io.IOException;
 public class Task1  {
     HomePage homePage = new HomePage();
     AboutPage aboutPage = new AboutPage();
-    TextToInteger textToInteger = new TextToInteger();
-    JsonReader jsonReader = new JsonReader();
+    TopSellers topSellers = new TopSellers();
+    TextToInteger textToInteger = new TextToInteger();;
 
 
 
@@ -23,7 +24,7 @@ public class Task1  {
         TestBase.initialize();
 
     }
-    @Test(priority = 1)
+    @Test(priority = 1, enabled = false)
     public void mainPageCheckTest(){
 
         //step1
@@ -43,6 +44,24 @@ public class Task1  {
         Assert.assertTrue(homePage.HomePageIsOpen());
         System.out.println();
 
+
+
+
+    }
+    @Test
+    public void TestCase2() throws InterruptedException {
+        //step1
+        Assert.assertTrue(homePage.HomePageIsOpen());
+
+        //step2
+        homePage.hoverAndClickOnNew();
+        Assert.assertTrue(topSellers.checkTopSellersPage());
+
+        //step3
+        topSellers.clickCheckBoxes();
+        //step3assertion
+
+        Assert.assertTrue(topSellers.areAllThreeChecked());
 
 
 

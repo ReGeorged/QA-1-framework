@@ -1,5 +1,6 @@
 package pages;
 
+import base.TestBase;
 import dev.failsafe.internal.util.Assert;
 import org.openqa.selenium.By;
 
@@ -14,18 +15,18 @@ public class AboutPage {
 
 
     public Boolean aboutPageIsOpen(){
-        Boolean aboutPageStatus = driver.findElement(aboutSteam).isDisplayed();
+        Boolean aboutPageStatus = TestBase.driver.findElement(aboutSteam).isDisplayed();
         return  aboutPageStatus;
 
     }
     public String onlineStatElementText(){
-        String onlineToText = driver.findElement(onlineStatElement).getText();
+        String onlineToText = TestBase.driver.findElement(onlineStatElement).getText();
         return onlineToText;
     }
 
     //this converts WebElements to string
     public String inGameStatElementText(){
-        String inGameToText = driver.findElement(inGameStatElement).getText();
+        String inGameToText = TestBase.driver.findElement(inGameStatElement).getText();
         return inGameToText;
     }
 }
