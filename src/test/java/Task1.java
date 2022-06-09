@@ -24,7 +24,7 @@ public class Task1  {
         TestBase.initialize();
 
     }
-    @Test(priority = 1, enabled = false)
+    @Test(priority = 2)
     public void mainPageCheckTest(){
 
         //step1
