@@ -12,13 +12,29 @@ import java.io.IOException;
 
 public class JsonReader {
 
-    public String returnFromJson(String whatToGet) throws IOException, ParseException {
+    public  String returnFromJson(String whatToGet){
         JSONParser parser = new JSONParser();
-        Object obj = parser.parse(new FileReader("src/main/java/data/configdata.json"));
+        Object obj = null;
+        try {
+            obj = parser.parse(new FileReader("src/main/java/data/configdata.json"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
         JSONObject jsonObject = (JSONObject) obj;
 
         return (String) jsonObject.get(whatToGet);
 
+    }
+
+
+
+
+    public String returnLink(){
+
+        String link = returnFromJson("link");
+        return link;
     }
 
 }

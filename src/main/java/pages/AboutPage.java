@@ -8,25 +8,24 @@ import static base.TestBase.driver;
 
 public class AboutPage {
     By aboutSteam = By.xpath("//div[contains(@class,\"about_subtitle\")]");
-    By onlineStatElement = By.xpath("//div[@class='online_stat'][1]");
-    By inGameStatElement = By.xpath("//div[@class='online_stat'][2]");
+
+
+    //created better selector without indexes
+    By onlineStatElement = By.xpath("//div[@class='online_stat_label gamers_online']/..");
+    By inGameStatElement = By.xpath("//div[@class='online_stat_label gamers_in_game']/..");
 
 
 
 
     public Boolean aboutPageIsOpen(){
-        Boolean aboutPageStatus = TestBase.driver.findElement(aboutSteam).isDisplayed();
-        return  aboutPageStatus;
-
+        return TestBase.driver.findElement(aboutSteam).isDisplayed();
     }
     public String onlineStatElementText(){
-        String onlineToText = TestBase.driver.findElement(onlineStatElement).getText();
-        return onlineToText;
+        return TestBase.driver.findElement(onlineStatElement).getText();
     }
 
     //this converts WebElements to string
     public String inGameStatElementText(){
-        String inGameToText = TestBase.driver.findElement(inGameStatElement).getText();
-        return inGameToText;
+        return TestBase.driver.findElement(inGameStatElement).getText();
     }
 }

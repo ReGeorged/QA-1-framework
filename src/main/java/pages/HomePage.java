@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
+
 
 import static base.TestBase.driver;
 
@@ -29,8 +29,8 @@ public class HomePage {
         driver.findElement( aboutButton).click();
     }
     public Boolean HomePageIsOpen(){
-        Boolean homePageStatus = driver.findElement(HomeMainCap).isDisplayed();
-        return homePageStatus;
+        return driver.findElement(HomeMainCap).isDisplayed();
+
     }
 
     public void hoverAndClickOnNew(){
