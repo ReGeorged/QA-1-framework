@@ -13,6 +13,7 @@ public class TestBase {
     public static WebDriver initialize(){
         //singleton pattern
         if (driver==null){
+            System.out.println("starting Chrome");
             WebDriverManager.chromedriver().setup();
 
             ChromeOptions options = new ChromeOptions();
