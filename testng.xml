@@ -3,7 +3,7 @@
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true" name="C:/Users/N/IdeaProjects/a1qa_task1/src/main/java/com/a1qa/base">
         <classes>
-            <class name="Task1"></class>
+            <class name="Task2"></class>
         </classes>
     </test>
 </suite>

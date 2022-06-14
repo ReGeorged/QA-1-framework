@@ -11,8 +11,6 @@ public class GamePage {
     By gameDate = By.xpath("//div[@class=\"date\"]");
     By gameFinalPrice = By.xpath("//div[@class=\"game_purchase_action_bg\"]//div[@data-price-final]");
 
-
-
     public boolean checkIfGamePageIsOpen(){
         return driver.findElement(gamePageChecker).isDisplayed();
     }
@@ -28,7 +26,5 @@ public class GamePage {
         String price = driver.findElement(gameFinalPrice).getText();
         return price;
     }
-
-
 
 }

@@ -8,8 +8,7 @@ import pages.HomePage;
 import pages.TopSellers;
 import utils.TextToInteger;
 
-
-public class Task1  {
+public class Task2 {
     TestBase testBase = new TestBase();
     TextToInteger textToInteger = new TextToInteger();
     static JsonReader jsonReader = new JsonReader();
@@ -19,20 +18,13 @@ public class Task1  {
     GamePage gamePage = new GamePage();
 
 
-
-
-
-
     @BeforeMethod
     public void setUp(){
-
         TestBase.initialize();
         testBase.driver.get(jsonReader.returnLink());
-
     }
-    @Test(priority = 1, enabled = false)
+    @Test(priority = 1)
     public void mainPageCheckTest(){
-
         //step1
         Assert.assertTrue(homePage.HomePageIsOpen(),"main page did not load");
 
@@ -49,12 +41,8 @@ public class Task1  {
         homePage.clickOnStore();
         Assert.assertTrue(homePage.HomePageIsOpen(), "main page did not load");
         System.out.println();
-
-
-
-
     }
-    @Test(enabled = true)
+    @Test(priority = 2)
     public void TestCase2(){
         //step1
         Assert.assertTrue(homePage.HomePageIsOpen(),"home page did not load");
@@ -81,13 +69,10 @@ public class Task1  {
         Assert.assertTrue(listGameName.equals( gamePage.getGameName()),"game names do not match");
         Assert.assertTrue(listGameDate.equals(gamePage.getGameDate()),"game release dates do not match");
         Assert.assertTrue(listGamePrice== textToInteger.filteredToInteger(gamePage.getGamePrice()),"game prices do not match");
-
-
     }
 
-    @AfterMethod(enabled = true)
+    @AfterMethod()
     public void tearDown(){
         TestBase.quit();
     }
-
 }

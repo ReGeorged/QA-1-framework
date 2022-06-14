@@ -5,22 +5,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
-
 import java.util.concurrent.TimeUnit;
 
 public class TestBase {
-
     public static WebDriver driver = null;
 
-
-
-
-
-
     public static WebDriver initialize(){
-
         //singleton pattern
-
         if (driver==null){
             WebDriverManager.chromedriver().setup();
 
@@ -34,25 +25,17 @@ public class TestBase {
             driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
             driver.manage().window().maximize();
             driver.manage().deleteAllCookies();
-
-
         }
         else{
-            driver=null;
+//            driver=null;     -- didnt knew to leave it or not -- wanted to use my own logic and not the web for the answer
             System.out.println("whats with so many drivers my friend!?");
         }
-
-
-
-
         return driver;
     }
 
     public static void quit(){
         System.out.println("quitting the browser");
-
         driver.quit();
         driver = null;
-
     }
 }

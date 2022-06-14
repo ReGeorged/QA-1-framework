@@ -14,7 +14,6 @@ public class TopSellers {
     By lanCoOpCheckBox = By.xpath("//span[@data-loc=\"LAN Co-op\"]//span//span[@class='tab_filter_control_checkbox']");
     By steamOsLinux = By.xpath("//span[@data-loc=\"SteamOS + Linux\"]//span//span[@class='tab_filter_control_checkbox']");
 
-
     By actionsChecked = By.xpath("//div[@class=\"tab_filter_control_row  checked\" and @data-loc=\"Action\"]");
     By lanChecked = By.xpath("//div[@class=\"tab_filter_control_row  checked\" and @data-loc=\"LAN Co-op\"]");
     By linuxChecked = By.xpath("//div[@class=\"tab_filter_control_row  checked\" and @data-loc=\"SteamOS + Linux\"]");
@@ -42,7 +41,6 @@ public class TopSellers {
 
     public boolean areThreeChecked(){
         return isItChecked(linuxChecked)&&isItChecked(lanChecked)&&isItChecked(actionsChecked);
-
     }
     public int listSize(){
         return driver.findElements(gamesList).size();
@@ -64,16 +62,12 @@ public class TopSellers {
     public String getGameDate(){
         String date = getGameFromList().findElement(inListDate).getText();
         return date;
-
     }
 
     public String getGamePrice(){
         String price =getGameFromList().findElement(inListPrice).getText();
         return price;
     }
-
-
-
     public String resultsCountText(){
         return driver.findElement(searchResultsCount).getText();
     }

@@ -8,7 +8,5 @@ public class TextToInteger {
         //this converts filtered Strings to integers
         int filteredInt = Integer.parseInt(FilteredToNUmber);
         return filteredInt;
-
-
     }
 }
