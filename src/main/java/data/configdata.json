@@ -1,3 +1,5 @@
 {
-  "link": "http://store.steampowered.com/"
+  "link": "http://store.steampowered.com/",
+  "browser": "chrome",
+  "wait": "10"
 }

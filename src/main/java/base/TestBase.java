@@ -1,41 +1,46 @@
 package base;
 
+import data.JsonReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import utils.TextToInteger;
+
 import java.util.concurrent.TimeUnit;
 
 public class TestBase {
-    public static WebDriver driver = null;
+    private static WebDriver driver = null;
+     static JsonReader jsonReader = new JsonReader();
 
     public static WebDriver initialize(){
         //singleton pattern
         if (driver==null){
-            System.out.println("starting Chrome");
-            WebDriverManager.chromedriver().setup();
+            if(jsonReader.returnFromJson("browser").equalsIgnoreCase("chrome")) {
+                WebDriverManager.chromedriver().setup();
 
-            ChromeOptions options = new ChromeOptions();
-            options.addArguments("--incognito");
-            DesiredCapabilities capabilities = new DesiredCapabilities();
-            capabilities.setCapability(ChromeOptions.CAPABILITY, options);
-            options.merge(capabilities);
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("--incognito");
+                DesiredCapabilities capabilities = new DesiredCapabilities();
+                capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+                options.merge(capabilities);
 
-            driver = new ChromeDriver(options);
-            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-            driver.manage().window().maximize();
-            driver.manage().deleteAllCookies();
-        }
-        else{
-//            driver=null;     -- didnt knew to leave it or not -- wanted to use my own logic and not the web for the answer
-            System.out.println("whats with so many drivers my friend!?");
+                driver = new ChromeDriver(options);
+                driver.manage().timeouts().implicitlyWait(TextToInteger.filteredToInteger(JsonReader.returnFromJson("wait")), TimeUnit.SECONDS);
+                driver.manage().window().maximize();
+                driver.manage().deleteAllCookies();
+            }
+            else if(jsonReader.returnFromJson("browser").equalsIgnoreCase("FF")||jsonReader.returnFromJson("browser").equalsIgnoreCase("firefox")){
+                WebDriverManager.firefoxdriver().setup();
+                driver = new FirefoxDriver();
+            }
         }
         return driver;
     }
 
     public static void quit(){
-        System.out.println("quitting the browser");
         driver.quit();
         driver = null;
     }

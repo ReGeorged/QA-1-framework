@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class JsonReader {
 
-    public  String returnFromJson(String whatToGet){
+    public static String returnFromJson(String whatToGet){
         JSONParser parser = new JSONParser();
         Object obj = null;
         try {
@@ -23,11 +23,6 @@ public class JsonReader {
 
         return (String) jsonObject.get(whatToGet);
 
-    }
-
-    public String returnLink(){
-        String link = returnFromJson("link");
-        return link;
     }
 
 }

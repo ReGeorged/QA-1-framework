@@ -8,33 +8,30 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-
-import static base.TestBase.driver;
-
 public class HomePage {
-    By HomeMainCap = By.xpath("//div[@id =  \"home_maincap_v7\"]");
-    By aboutButton = By.xpath("//div[@class=\"supernav_container\"]//a[@class=\"menuitem\"][1]");
-    By StoreButtonElement = By.xpath("//div[@class=\"supernav_container\"]//a[@data-tooltip-content=\".submenu_store\"]");
-    By newAndNoteworthy = By.xpath("//div[@id=\"noteworthy_tab\"]//span//a[@class=\"pulldown_desktop\"]");
-    By topSellersFlyout = By.xpath("//div[@id=\"noteworthy_flyout\"]//div//a[1]");
+    private By HomeMainCap = By.xpath("//div[@id =  \"home_maincap_v7\"]");
+    private By aboutButton = By.xpath("//div[@class=\"supernav_container\"]//a[@class=\"menuitem\"][1]");
+    private By StoreButtonElement = By.xpath("//div[@class=\"supernav_container\"]//a[@data-tooltip-content=\".submenu_store\"]");
+    private By newAndNoteworthy = By.xpath("//div[@id=\"noteworthy_tab\"]//span//a[@class=\"pulldown_desktop\"]");
+    private By topSellersFlyout = By.xpath("//div[@id=\"noteworthy_flyout\"]//div//a[1]");
 
     public void clickOnAbout(){
-        driver.findElement( aboutButton).click();
+        TestBase.initialize().findElement( aboutButton).click();
     }
     public Boolean HomePageIsOpen(){
-        return driver.findElement(HomeMainCap).isDisplayed();
+        return TestBase.initialize().findElement(HomeMainCap).isDisplayed();
     }
 
     public void hoverAndClickOnNew(){
-        Actions action = new Actions(TestBase.driver);
-        WebDriverWait wait = new WebDriverWait(TestBase.driver, Duration.ofSeconds(10));
+        Actions action = new Actions(TestBase.initialize());
+        WebDriverWait wait = new WebDriverWait(TestBase.initialize(), Duration.ofSeconds(10));
 
-        action.moveToElement(driver.findElement(newAndNoteworthy)).perform();
+        action.moveToElement(TestBase.initialize().findElement(newAndNoteworthy)).perform();
         wait.until(ExpectedConditions.visibilityOfElementLocated(topSellersFlyout));
-        driver.findElement(topSellersFlyout).click();
+        TestBase.initialize().findElement(topSellersFlyout).click();
     }
     public void clickOnStore(){
-        driver.findElement(StoreButtonElement).click();
+        TestBase.initialize().findElement(StoreButtonElement).click();
     }
 
 }

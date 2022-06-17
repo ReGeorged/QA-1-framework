@@ -1,29 +1,30 @@
 package pages;
 
+import base.TestBase;
 import org.openqa.selenium.By;
 
-import static base.TestBase.driver;
+
 
 public class GamePage {
 
-    By gameName= By.xpath("//div[@id=\"appHubAppName\"]");
-    By gamePageChecker = By.xpath("//img[@class=\"game_header_image_full\"]");
-    By gameDate = By.xpath("//div[@class=\"date\"]");
-    By gameFinalPrice = By.xpath("//div[@class=\"game_purchase_action_bg\"]//div[@data-price-final]");
+    private By gameName= By.xpath("//div[@id=\"appHubAppName\"]");
+    private By gamePageChecker = By.xpath("//img[@class=\"game_header_image_full\"]");
+    private By gameDate = By.xpath("//div[@class=\"date\"]");
+    private By gameFinalPrice = By.xpath("//div[@class=\"game_purchase_action_bg\"]//div[@data-price-final]");
 
     public boolean checkIfGamePageIsOpen(){
-        return driver.findElement(gamePageChecker).isDisplayed();
+        return TestBase.initialize().findElement(gamePageChecker).isDisplayed();
     }
     public String getGameName(){
-        String name = driver.findElement(gameName).getText();
+        String name = TestBase.initialize().findElement(gameName).getText();
         return name;
     }
     public String getGameDate(){
-        String date = driver.findElement(gameDate).getText();
+        String date = TestBase.initialize().findElement(gameDate).getText();
         return date;
     }
     public String getGamePrice(){
-        String price = driver.findElement(gameFinalPrice).getText();
+        String price = TestBase.initialize().findElement(gameFinalPrice).getText();
         return price;
     }
 
