@@ -8,12 +8,26 @@ import java.io.IOException;
 
 
 public class JsonReader {
-
     public static String returnFromJson(String whatToGet){
         JSONParser parser = new JSONParser();
         Object obj = null;
         try {
             obj = parser.parse(new FileReader("src/main/java/data/configdata.json"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+        JSONObject jsonObject = (JSONObject) obj;
+
+        return (String) jsonObject.get(whatToGet);
+    }
+
+    public static String returnFromTestDataJson(String whatToGet){
+        JSONParser parser = new JSONParser();
+        Object obj = null;
+        try {
+            obj = parser.parse(new FileReader("src/main/java/data/testdata.json"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         } catch (ParseException e) {

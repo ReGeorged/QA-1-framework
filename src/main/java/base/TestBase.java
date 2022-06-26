@@ -7,7 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import utils.TextToInteger;
+import utils.StringUtils;
 
 import java.util.concurrent.TimeUnit;
 
@@ -28,7 +28,7 @@ public class TestBase {
                 options.merge(capabilities);
 
                 driver = new ChromeDriver(options);
-                driver.manage().timeouts().implicitlyWait(TextToInteger.filteredToInteger(JsonReader.returnFromJson("wait")), TimeUnit.SECONDS);
+                driver.manage().timeouts().implicitlyWait(StringUtils.filteredToInteger(JsonReader.returnFromJson("wait")), TimeUnit.SECONDS);
                 driver.manage().window().maximize();
                 driver.manage().deleteAllCookies();
             }
@@ -43,5 +43,8 @@ public class TestBase {
     public static void quit(){
         driver.quit();
         driver = null;
+    }
+    public static void close(){
+        driver.close();
     }
 }
