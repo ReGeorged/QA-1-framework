@@ -46,7 +46,7 @@ public class JsonReader {
     }
 
 
-    private static ArrayList<String> jsonreada(String whichSet) {
+    private static ArrayList<String> getDataFromJson(String whichSet) {
         //Reading JSON from file system
         BufferedReader br = null;
         try {
@@ -83,33 +83,33 @@ public class JsonReader {
 
     public static String getName(String whichSet) {
         Log4jUtil.log4J.info("Get name from" + whichSet + " set");
-        return jsonreada(whichSet).get(0);
+        return getDataFromJson(whichSet).get(0);
     }
 
 
     public static String getfName(String whichSet) {
         Log4jUtil.log4J.info("Get Fname from" + whichSet + " set");
-        return jsonreada(whichSet).get(1);
+        return getDataFromJson(whichSet).get(1);
     }
 
     public static String getMail(String whichSet) {
         Log4jUtil.log4J.info("Get mail from" + whichSet + " set");
-        return jsonreada(whichSet).get(2);
+        return getDataFromJson(whichSet).get(2);
     }
 
     public static String getAge(String whichSet) {
         Log4jUtil.log4J.info("Get age from" + whichSet + " set");
-        return jsonreada(whichSet).get(3);
+        return getDataFromJson(whichSet).get(3);
     }
 
     public static String getSalary(String whichSet) {
         Log4jUtil.log4J.info("Get Salary from" + whichSet + " set");
-        return jsonreada(whichSet).get(4);
+        return getDataFromJson(whichSet).get(4);
     }
 
     public static String getDepartment(String whichSet) {
         Log4jUtil.log4J.info("Get department from" + whichSet + " set");
-        return jsonreada(whichSet).get(5);
+        return getDataFromJson(whichSet).get(5);
     }
 
 }

@@ -7,21 +7,14 @@ import utils.StringUtils;
 
 
 public class Task3 extends BaseTest {
-    DropDownFrame dropDownFrame = new DropDownFrame();
-    HomePage homePage = new HomePage();
 
-    AlertsAndOthersPage alertsAndOthersPage = new AlertsAndOthersPage();
-
-    NestedFramesPage nestedFramesPage = new NestedFramesPage();
-    ElementsPage elementsPage = new ElementsPage();
-    WebTablesPage webTablesPage = new WebTablesPage();
-    BrowserWindowsPage browserWindowsPage = new BrowserWindowsPage();
-    SamplePage samplePage = new SamplePage();
-    LinksPage linksPage = new LinksPage();
 
     @Test
     public void case1() {
+        HomePage homePage = new HomePage();
+        DropDownFrame dropDownFrame = new DropDownFrame();
         AlertsPage alertsPage = new AlertsPage();
+        AlertsAndOthersPage alertsAndOthersPage = new AlertsAndOthersPage();
 
         //Step1
         Assert.assertTrue(homePage.isPageOpen(), "Home page is not open");
@@ -56,6 +49,11 @@ public class Task3 extends BaseTest {
 
     @Test
     public void case2() {
+        HomePage homePage = new HomePage();
+        DropDownFrame dropDownFrame = new DropDownFrame();
+        AlertsAndOthersPage alertsAndOthersPage = new AlertsAndOthersPage();
+        NestedFramesPage nestedFramesPage = new NestedFramesPage();
+
         //Step1
         Assert.assertTrue(homePage.isPageOpen(), "Home page is not open");
         //Step2
@@ -69,7 +67,12 @@ public class Task3 extends BaseTest {
     }
 
     @Test
-    public void case3() throws InterruptedException {
+    public void case3() {
+        HomePage homePage = new HomePage();
+        DropDownFrame dropDownFrame = new DropDownFrame();
+        ElementsPage elementsPage = new ElementsPage();
+        WebTablesPage webTablesPage = new WebTablesPage();
+
         //Step1
         Assert.assertTrue(homePage.isPageOpen());
 
@@ -92,10 +95,15 @@ public class Task3 extends BaseTest {
     }
 
     @Test
-    public void case4() throws InterruptedException {
+    public void case4() {
+        HomePage homePage = new HomePage();
+        DropDownFrame dropDownFrame = new DropDownFrame();
+        BrowserWindowsPage browserWindowsPage = new BrowserWindowsPage();
+        SamplePage samplePage = new SamplePage();
+        LinksPage linksPage = new LinksPage();
+
         //Step1
         Assert.assertTrue(homePage.isPageOpen());
-
         //Step2
         homePage.clickOnAlertsBtn();
         dropDownFrame.clickOnBrowserWindowsBtn();
@@ -116,6 +124,5 @@ public class Task3 extends BaseTest {
         //Step7
         homePage.switchTabAndClose();
         Assert.assertTrue(linksPage.isPageOpen());
-
     }
 }
