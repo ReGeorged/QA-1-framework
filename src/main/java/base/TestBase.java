@@ -13,12 +13,12 @@ import java.util.concurrent.TimeUnit;
 
 public class TestBase {
     private static WebDriver driver = null;
-     static JsonReader jsonReader = new JsonReader();
+    static JsonReader jsonReader = new JsonReader();
 
-    public static WebDriver initialize(){
+    public static WebDriver initialize() {
         //singleton pattern
-        if (driver==null){
-            if(jsonReader.returnFromJson("browser").equalsIgnoreCase("chrome")) {
+        if (driver == null) {
+            if (jsonReader.returnFromJson("browser").equalsIgnoreCase("chrome")) {
                 WebDriverManager.chromedriver().setup();
 
                 ChromeOptions options = new ChromeOptions();
@@ -31,8 +31,7 @@ public class TestBase {
                 driver.manage().timeouts().implicitlyWait(StringUtils.filteredToInteger(JsonReader.returnFromJson("wait")), TimeUnit.SECONDS);
                 driver.manage().window().maximize();
                 driver.manage().deleteAllCookies();
-            }
-            else if(jsonReader.returnFromJson("browser").equalsIgnoreCase("FF")||jsonReader.returnFromJson("browser").equalsIgnoreCase("firefox")){
+            } else if (jsonReader.returnFromJson("browser").equalsIgnoreCase("FF") || jsonReader.returnFromJson("browser").equalsIgnoreCase("firefox")) {
                 WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();
             }
@@ -40,11 +39,12 @@ public class TestBase {
         return driver;
     }
 
-    public static void quit(){
+    public static void quit() {
         driver.quit();
         driver = null;
     }
-    public static void close(){
+
+    public static void close() {
         driver.close();
     }
 }

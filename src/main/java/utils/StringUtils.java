@@ -11,8 +11,8 @@ public class StringUtils {
         int filteredInt = Integer.parseInt(FilteredToNUmber);
         return filteredInt;
     }
-    public static String getAlphaNumericString()
-    {
+
+    public static String getAlphaNumericString() {
 
 
         int n = StringUtils.filteredToInteger(JsonReader.returnFromTestDataJson("randomStringLength"));
@@ -29,7 +29,7 @@ public class StringUtils {
             // generate a random number between
             // 0 to AlphaNumericString variable length
             int index
-                    = (int)(AlphaNumericString.length()
+                    = (int) (AlphaNumericString.length()
                     * Math.random());
 
             // add Character one by one in end of sb

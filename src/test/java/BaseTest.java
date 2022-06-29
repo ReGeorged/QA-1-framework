@@ -5,11 +5,12 @@ import org.testng.annotations.BeforeMethod;
 
 public class BaseTest {
     @BeforeMethod
-    public void setUp(){
+    public void setUp() {
         TestBase.initialize().get(JsonReader.returnFromJson("link"));
     }
+
     @AfterMethod()
-    public void tearDown(){
+    public void tearDown() {
         TestBase.quit();
     }
 }

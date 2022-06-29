@@ -1,0 +1,23 @@
+{
+  "randomStringLength": "7",
+  "firstData": [
+    {
+      "name": "Jon",
+      "fname": "Snow",
+      "mail": "knownothing@gmail.com",
+      "age": "30",
+      "salary": "3000",
+      "department": "alpha"
+    }
+  ],
+  "secondData": [
+    {
+      "name": "Buttercup",
+      "fname": "Cumbersnatch",
+      "mail": "BudapestCandygram@mail.io",
+      "age": "41",
+      "salary": "2000",
+      "department": "beta"
+    }
+  ]
+}
