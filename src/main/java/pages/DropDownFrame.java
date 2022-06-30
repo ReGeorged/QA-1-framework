@@ -17,7 +17,11 @@ public class DropDownFrame extends BaseForm {
     private BaseButton browserWindowsBtn = new BaseButton(By.xpath("//li[@class=\"btn btn-light \"]//span[contains(text(),'Browser Windows')]"), "dropDown browser Windows");
     private BaseButton elementsBtn = new BaseButton(By.xpath("//span[@class=\"pr-1\"][1]"), "elements dropdown");
     private BaseButton linksBtn = new BaseButton(By.xpath("//div[@class=\"element-list collapse show\"]//li[@id=\"item-5\"]"), "Links Btn");
-
+    private BaseButton upAndDownloadBtn = new BaseButton(By.xpath("//li[@class=\"btn btn-light \"]//span[contains(text(),'Upload and Download')]"),"upload and download button");
+    public void clickOnUpAndDownloadBtn(){
+        upAndDownloadBtn.scrollToElement();
+        upAndDownloadBtn.click();
+    }
     public void clickOnDropDownAlertsBtn() {
         dropDownAlertsButton.scrollToElement();
         dropDownAlertsButton.click();

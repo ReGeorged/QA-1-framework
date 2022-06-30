@@ -8,7 +8,7 @@ public class BaseTextField extends BaseElement {
     }
 
     public void sendText(String whatToSend) {
-        TestBase.initialize().findElement(getElementLocator()).sendKeys(whatToSend);
+        findElement().sendKeys(whatToSend);
 
     }
 

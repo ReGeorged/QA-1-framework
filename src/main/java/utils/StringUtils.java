@@ -5,6 +5,7 @@ import data.JsonReader;
 public class StringUtils {
 
     public static int filteredToInteger(String S) {
+        Log4jUtil.log4J.info("Filter string and return integer");
         //this removes any text from string and leaves only numbers
         String FilteredToNUmber = S.replaceAll("[^0-9]", "");
         //this converts filtered Strings to integers
@@ -13,6 +14,7 @@ public class StringUtils {
     }
 
     public static String getAlphaNumericString() {
+        Log4jUtil.log4J.info("Generate random string");
 
 
         int n = StringUtils.filteredToInteger(JsonReader.returnFromTestDataJson("randomStringLength"));

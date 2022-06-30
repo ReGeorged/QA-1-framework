@@ -1,45 +1,45 @@
+import data.JsonReader;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.*;
-import utils.AlertsUtil;
-import utils.DriverUtils;
-import utils.StringUtils;
+import utils.*;
 
 
 public class Task3 extends BaseTest {
 
 
     @Test
-    public void case1() {
+    public void testAlerts() {
         HomePage homePage = new HomePage();
         DropDownFrame dropDownFrame = new DropDownFrame();
         AlertsPage alertsPage = new AlertsPage();
         AlertsAndOthersPage alertsAndOthersPage = new AlertsAndOthersPage();
 
-        //Step1
+        Log4jUtil.log4J.info("Step 1 -- Navigate to main page --");
+
         Assert.assertTrue(homePage.isPageOpen(), "Home page is not open");
-        //Step2
+        Log4jUtil.log4J.info("Step 2 -- Click on Alerts, Frame & Windows button, In a menu click Alerts button --");
         homePage.clickOnAlertsBtn();
         Assert.assertTrue(alertsAndOthersPage.isPageOpen(), "Alerts and others page is not open");
         dropDownFrame.clickOnDropDownAlertsBtn();
         Assert.assertTrue(alertsPage.isPageOpen(), "Alerts page is not open");
-        //Step3
+        Log4jUtil.log4J.info("Step 3 -- Click on Click Button to see alert button --");
         alertsPage.clickOnAlertBtn();
         Assert.assertTrue(AlertsUtil.isAlertPresent(), "Alert did not appear");
-        //Step4
+        Log4jUtil.log4J.info("Step 4 -- Click OK button -- ");
         AlertsUtil.acceptAlert();
         Assert.assertFalse(AlertsUtil.isAlertPresent(), "Alert didnt Disappear");
-        //Step5
+        Log4jUtil.log4J.info("Step 5 -- Click on On button click, confirm box will appear button --");
         alertsPage.clickOnConfirmBtn();
         Assert.assertTrue(AlertsUtil.isAlertPresent());
-        //Step6
+        Log4jUtil.log4J.info("Step 6 -- Click on OK button --");
         AlertsUtil.acceptAlert();
         Assert.assertFalse(AlertsUtil.isAlertPresent(), "Alert is gone");
         Assert.assertTrue(alertsPage.checkConfirmMessage(), "You selected Ok - Did not appear");
-        //Step7
+        Log4jUtil.log4J.info("Step 7 -- Click on On button click, prompt box will appear button --");
         alertsPage.clickOnPromptBtn();
         Assert.assertTrue(AlertsUtil.isAlertPresent(), "Alert didnt appear");
-        //Step8
+        Log4jUtil.log4J.info("Step 8 -- Enter randomly generated text, click OK button --");
         String randomText = StringUtils.getAlphaNumericString();
         AlertsUtil.sendToPrompt(randomText);
         AlertsUtil.acceptAlert();
@@ -48,15 +48,15 @@ public class Task3 extends BaseTest {
     }
 
     @Test
-    public void case2() {
+    public void testIframe() {
         HomePage homePage = new HomePage();
         DropDownFrame dropDownFrame = new DropDownFrame();
         AlertsAndOthersPage alertsAndOthersPage = new AlertsAndOthersPage();
         NestedFramesPage nestedFramesPage = new NestedFramesPage();
 
-        //Step1
+        Log4jUtil.log4J.info("Step 1 -- Navigate to main page --");
         Assert.assertTrue(homePage.isPageOpen(), "Home page is not open");
-        //Step2
+        Log4jUtil.log4J.info("Step 2 -- Click on Alerts, Frame & Windows button, In a menu click Nested Frames button --");
         homePage.clickOnAlertsBtn();
         Assert.assertTrue(alertsAndOthersPage.isPageOpen(), "Alerts and others page is not open");
         dropDownFrame.clickOnIframesBtn();
@@ -67,62 +67,83 @@ public class Task3 extends BaseTest {
     }
 
     @Test
-    public void case3() {
+    public void testTables() {
         HomePage homePage = new HomePage();
         DropDownFrame dropDownFrame = new DropDownFrame();
         ElementsPage elementsPage = new ElementsPage();
         WebTablesPage webTablesPage = new WebTablesPage();
 
-        //Step1
+        Log4jUtil.log4J.info("Step 1 -- Navigate to main page --");
         Assert.assertTrue(homePage.isPageOpen());
 
-        //Step2
+        Log4jUtil.log4J.info("Step 2 -- Click on Elements button, In the menu click a Web Tables button --");
         homePage.clickOnElementsBtn();
         Assert.assertTrue(elementsPage.isPageOpen());
         dropDownFrame.clickOnWebTableBtn();
         Assert.assertTrue(webTablesPage.isPageOpen());
-        //Step3
+        Log4jUtil.log4J.info("Step 3 -- Click on Add button --");
         webTablesPage.clickOnAddBtn();
         Assert.assertTrue(webTablesPage.checkRegForm());
-        //Step4
-        webTablesPage.fillInfoUniversal("firstData");
+        Log4jUtil.log4J.info("Step 4 -- Enter data for User № from the table and then click Submit button --");
+        webTablesPage.fillInfoUniversal("N1");
         webTablesPage.clickOnAddBtn();
-        webTablesPage.fillInfoUniversal("secondData");
-        //Step5
+        webTablesPage.fillInfoUniversal("N2");
+        Log4jUtil.log4J.info("Step 5 -- Click Delete button in a row which contains data of User №  --");
         webTablesPage.clickOn5thBtn();
         webTablesPage.clickOn4thBtn();
         Assert.assertFalse(webTablesPage.check4thBtn());
     }
 
     @Test
-    public void case4() {
+    public void testHandles() {
         HomePage homePage = new HomePage();
         DropDownFrame dropDownFrame = new DropDownFrame();
         BrowserWindowsPage browserWindowsPage = new BrowserWindowsPage();
         SamplePage samplePage = new SamplePage();
         LinksPage linksPage = new LinksPage();
 
-        //Step1
+        Log4jUtil.log4J.info("Step 1 -- Navigate to main page --");
         Assert.assertTrue(homePage.isPageOpen());
-        //Step2
+        Log4jUtil.log4J.info("Step 2 -- Click on Alerts, Frame & Windows button, In the menu click a Browser Windows button --");
         homePage.clickOnAlertsBtn();
         dropDownFrame.clickOnBrowserWindowsBtn();
         Assert.assertTrue(browserWindowsPage.isPageOpen());
-        //Step3
+        Log4jUtil.log4J.info("Step 3 -- Click on New Tab button --");
         browserWindowsPage.clickOnNewBtn();
         samplePage.isPageOpen();
-        //Step4
+        Log4jUtil.log4J.info("Step 4 -- Close current tab --");
         samplePage.switchNCloseSamplePage();
         Assert.assertTrue(browserWindowsPage.isPageOpen());
-        //Step5
+        Log4jUtil.log4J.info("Step 5 -- In the menu on the left click Elements → Links button --");
         dropDownFrame.clickOnLinksBtn();
         Assert.assertTrue(linksPage.isPageOpen());
-        //Step6
+        Log4jUtil.log4J.info("Step 6 -- Click on Home link --");
         linksPage.clickOnHomeBtn();
         DriverUtils.switchToNewWindow();
         Assert.assertTrue(homePage.isPageOpen());
-        //Step7
+        Log4jUtil.log4J.info("Step 7 -- Resume to previous tab --");
         homePage.switchTabAndClose();
         Assert.assertTrue(linksPage.isPageOpen());
+    }
+
+    @Test
+    public void testUploadNDownload() {
+        HomePage homePage = new HomePage();
+        DropDownFrame dropDownFrame = new DropDownFrame();
+        ElementsPage elementsPage = new ElementsPage();
+        UpAndDownloadPage upAndDownloadPage = new UpAndDownloadPage();
+        Log4jUtil.log4J.info("Step 1 -- Navigate to main page --");
+        Assert.assertTrue(homePage.isPageOpen());
+        Log4jUtil.log4J.info("Step 2 -- Click on Elements button, In the left menu click Upload and Download button --");
+        homePage.clickOnElementsBtn();
+        Assert.assertTrue(elementsPage.isPageOpen());
+        dropDownFrame.clickOnUpAndDownloadBtn();
+        Assert.assertTrue(upAndDownloadPage.isPageOpen());
+        Log4jUtil.log4J.info("Step 3 -- Click Download button, wait until file is downloaded --");
+        upAndDownloadPage.clickOnDownloadBtn();
+        Assert.assertFalse(FileUtils.isEmpty(JsonReader.returnFromJson("download")));
+        Log4jUtil.log4J.info("Step 4 -- Upload file which was downloaded on step #3 --");
+        upAndDownloadPage.uploadFiles();
+        Assert.assertTrue(upAndDownloadPage.checkUploadedField());
     }
 }

@@ -2,7 +2,7 @@ package pages;
 
 import base.BaseField;
 import base.BaseForm;
-import base.TestBase;
+import base.BrowserBase;
 import org.openqa.selenium.By;
 import utils.DriverUtils;
 
@@ -13,7 +13,7 @@ public class SamplePage extends BaseForm {
 
     public void switchNCloseSamplePage() {
         DriverUtils.switchToTabByInt(1);
-        TestBase.close();
+        BrowserBase.close();
         DriverUtils.switchToMainWindow();
     }
 

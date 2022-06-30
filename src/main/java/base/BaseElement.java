@@ -18,27 +18,26 @@ public abstract class BaseElement {
 
     public void click() {
         Log4jUtil.log4J.info("Click on " + name);
-        TestBase.initialize().findElement(locator).click();
+        BrowserBase.initialize().findElement(locator).click();
     }
 
     public String getText() {
         Log4jUtil.log4J.info("Get text from " + name);
-        return TestBase.initialize().findElement(locator).getText();
+        return BrowserBase.initialize().findElement(locator).getText();
     }
 
     public boolean isDisplayed() {
         Log4jUtil.log4J.info("Check if element: " + name + " is present");
         boolean isDisplayed = false;
-        if (TestBase.initialize().findElements(locator).size() != 0) {
+        if (BrowserBase.initialize().findElements(locator).size() != 0) {
             isDisplayed = true;
         }
         return isDisplayed;
     }
 
-    //TODO cant access it in child classes when its protected
-    private WebElement findElement() {
+    protected WebElement findElement() {
         Log4jUtil.log4J.info("Find Element: " + name);
-        return TestBase.initialize().findElement(locator);
+        return BrowserBase.initialize().findElement(locator);
     }
 
     public void waitForElement() {
@@ -59,13 +58,13 @@ public abstract class BaseElement {
 
     public void scrollToElement() {
         Log4jUtil.log4J.info("Scroll to: " + name);
-        JavascriptExecutor je = (JavascriptExecutor) TestBase.initialize();
+        JavascriptExecutor je = (JavascriptExecutor) BrowserBase.initialize();
         je.executeScript("arguments[0].scrollIntoView(true);", findElement());
     }
 
     public void switchToFrame() {
         Log4jUtil.log4J.info("Switch to: " + name + " elements frame");
-        TestBase.initialize().switchTo().frame(findElement());
+        BrowserBase.initialize().switchTo().frame(findElement());
     }
 }
 

@@ -1,6 +1,6 @@
 {
   "randomStringLength": "7",
-  "firstData": [
+  "N1": [
     {
       "name": "Jon",
       "fname": "Snow",
@@ -10,7 +10,7 @@
       "department": "alpha"
     }
   ],
-  "secondData": [
+  "N2": [
     {
       "name": "Buttercup",
       "fname": "Cumbersnatch",

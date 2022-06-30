@@ -1,19 +1,22 @@
 package utils;
 
-import base.TestBase;
+import base.BrowserBase;
 import org.openqa.selenium.NoAlertPresentException;
 public class AlertsUtil {
     public static void acceptAlert() {
-        TestBase.initialize().switchTo().alert().accept();
+        Log4jUtil.log4J.info("Accept alert");
+        BrowserBase.initialize().switchTo().alert().accept();
     }
 
     public static void sendToPrompt(String whatToSendToAlert) {
-        TestBase.initialize().switchTo().alert().sendKeys(whatToSendToAlert);
+        Log4jUtil.log4J.info("Send to prompt: "+whatToSendToAlert);
+        BrowserBase.initialize().switchTo().alert().sendKeys(whatToSendToAlert);
     }
 
     public static boolean isAlertPresent() {
+        Log4jUtil.log4J.info("Check if alert is present");
         try {
-            TestBase.initialize().switchTo().alert();
+            BrowserBase.initialize().switchTo().alert();
             return true;
         } catch (NoAlertPresentException e) {
             return false;

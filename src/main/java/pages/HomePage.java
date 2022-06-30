@@ -11,7 +11,14 @@ public class HomePage extends BaseForm {
     }
 
     private BaseButton alertsButton = new BaseButton(By.xpath("//h5[contains(text(),'Alerts, Frame & Windows')]"), "alertsButton");
+
     private BaseButton elementsButton = new BaseButton(By.xpath("//h5[contains(text(),'Elements')]"), "elements Button");
+    private BaseButton widgetsBtn = new BaseButton(By.xpath("//h5[contains(text(),'Widgets')]"),"widgets button");
+
+    public void clickOnWidgetsBtn(){
+        widgetsBtn.scrollToElement();
+        widgetsBtn.click();
+    }
 
 
     public void clickOnAlertsBtn() {
@@ -25,19 +32,19 @@ public class HomePage extends BaseForm {
     }
 
     public void goBackTo1stPage() {
-        TestBase.initialize().getWindowHandles().forEach(tab -> TestBase.initialize().switchTo().window(tab));
+        BrowserBase.initialize().getWindowHandles().forEach(tab -> BrowserBase.initialize().switchTo().window(tab));
 
     }
 
     public void switchTab() {
-        ArrayList<String> tabs2 = new ArrayList<String>(TestBase.initialize().getWindowHandles());
-        TestBase.initialize().switchTo().window(tabs2.get(1));
+        ArrayList<String> tabs2 = new ArrayList<String>(BrowserBase.initialize().getWindowHandles());
+        BrowserBase.initialize().switchTo().window(tabs2.get(1));
     }
 
     public void switchTabAndClose() {
-        ArrayList<String> tabs2 = new ArrayList<String>(TestBase.initialize().getWindowHandles());
-        TestBase.initialize().close();
-        TestBase.initialize().switchTo().window(tabs2.get(0));
+        ArrayList<String> tabs2 = new ArrayList<String>(BrowserBase.initialize().getWindowHandles());
+        BrowserBase.initialize().close();
+        BrowserBase.initialize().switchTo().window(tabs2.get(0));
 
     }
 

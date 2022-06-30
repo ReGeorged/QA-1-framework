@@ -17,16 +17,19 @@ public class AlertsPage extends BaseForm {
     private BaseField successConfirmMessage = new BaseField(By.xpath("//span[@id=\"confirmResult\" and @class=\"text-success\"]"), "clicked ok and confirm message appeared");
 
     public void clickOnAlertBtn() {
+        alertBtn.waitUntilClickable();
         alertBtn.click();
     }
 
     public void clickOnConfirmBtn() {
+        confirmBtn.scrollToElement();
         confirmBtn.waitUntilClickable();
         confirmBtn.click();
     }
 
     public void clickOnPromptBtn() {
         promptBtn.scrollToElement();
+        promptBtn.waitUntilClickable();
         promptBtn.click();
     }
 
