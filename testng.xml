@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
 <suite name="All Test Suite">
-    <test verbose="2" preserve-order="true" name="C:/Users/N/IdeaProjects/a1qa_task1/src/main/java/com/a1qa/base">
+    <test verbose="2" preserve-order="true" name="C:/Users/N/IdeaProjects/g.bazierashvili3/src/test/java/Task3.java">
         <classes>
-            <class name="Task2"></class>
+            <class name="Task3"></class>
         </classes>
     </test>
 </suite>
