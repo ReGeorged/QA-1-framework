@@ -32,6 +32,7 @@ public class BrowserBase {
                     options.addArguments("--user-data-dir=/path/to/new/profile");
                     options.addArguments("--no-sandbox");
                     options.addArguments("--disable-dev-shm-usage");
+                    options.addArguments("--remote-allow-origins=*");
                     options.setExperimentalOption("prefs", prefs);
 
                     options.addArguments("--incognito");
