@@ -9,5 +9,8 @@
         <module name="a1qa_task1" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="task1" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>
