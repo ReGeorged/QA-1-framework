@@ -17,12 +17,10 @@ public class WaitUtils {
 
     public static void waitForElement(By locator) {
         Log4jUtil.log4J.info("Wait for element");
-        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
     public static void waitUntilClickable(By locator) {
         Log4jUtil.log4J.info("Wait for element to be clickable");
-        wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
     public static void fluentDownloadCheck(String filePath){
         Log4jUtil.log4J.info("Wait for file to be downloaded");

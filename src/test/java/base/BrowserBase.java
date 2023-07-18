@@ -29,6 +29,9 @@ public class BrowserBase {
                     Map<String, Object> prefs = new HashMap<String, Object>();
                     prefs.put("download.default_directory", System.getProperty("user.dir") + File.separator + "ChromeDriver" + File.separator + "BrowserDownloadedFiles");
                     ChromeOptions options = new ChromeOptions();
+                    options.addArguments("--user-data-dir=/path/to/new/profile");
+                    options.addArguments("--no-sandbox");
+                    options.addArguments("--disable-dev-shm-usage");
                     options.setExperimentalOption("prefs", prefs);
 
                     options.addArguments("--incognito");
@@ -39,7 +42,7 @@ public class BrowserBase {
 
 
                     try {
-                        driver = new ChromeDriver( options);
+                        driver = new ChromeDriver(options);
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }

@@ -2,7 +2,11 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
 <suite name="All Test Suite">
-    <test verbose="2" preserve-order="true" name="C:/Users/N/IdeaProjects/g.bazierashvili3/src/test/java/Task3.java">
+
+    <listeners>
+        <listener class-name="com.epam.reportportal.testng.ReportPortalTestNGListener"></listener>
+    </listeners>
+    <test verbose="2" preserve-order="true" name="Demoqa Step3.java">
         <classes>
             <class name="Task3"></class>
         </classes>
