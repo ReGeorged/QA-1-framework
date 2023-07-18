@@ -4,9 +4,9 @@
 <suite name="All Test Suite">
 
     <listeners>
-        <listener class-name="com.epam.reportportal.testng.ReportPortalTestNGListener"></listener>
+        <listener class-name="com.epam.reportportal.testng.ReportPortalTestNGListener" />
     </listeners>
-    <test verbose="2" preserve-order="true" name="Demoqa Step3.java">
+    <test verbose="2" preserve-order="true" name="DemoqaStep3">
         <classes>
             <class name="Task3"></class>
         </classes>
